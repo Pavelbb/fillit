@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 10:24:20 by clynderl          #+#    #+#             */
-/*   Updated: 2019/10/29 16:10:03 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:44:35 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,16 +92,14 @@ t_tetri		*ft_parse(fd)
 		if ((r = read(fd, buf, 20)) < 0)
 			return (NULL);
 		buf[r] = '\0';
-		if (r != 20 || !ft_valid_tetri(buf, i))
+		if (r != 20 || !ft_valid_tetri(buf, i++))
 			return (NULL);
-		buf = to_top_left(buf);
-		ft_list_push_back(&tetries, buf);
+		ft_list_push_back(&tetries, to_top_left(buf));
 		if ((r = read(fd, buf, 1)) < 0)
 			return (NULL);
 		buf[r] = '\0';
 		if (r == 1 && !ft_strequ(buf, "\n"))
 			return (NULL);
-		i++;
 	}
 	return (i <= 26 ? tetries : NULL);
 }
