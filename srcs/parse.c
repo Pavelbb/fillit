@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 10:24:20 by clynderl          #+#    #+#             */
-/*   Updated: 2019/10/29 18:14:05 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/10/29 18:22:45 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int			ft_valid_tetri(char *buf, int k)
 	return (hashes == 4 && touches >= 6);
 }
 
-t_tetri		*ft_parse(fd)
+t_tetri		*ft_parse(int fd)
 {
 	t_tetri		*tetries;
 	int			r;
@@ -109,5 +109,5 @@ t_tetri		*ft_parse(fd)
 		if (r == 1 && !ft_strequ(buf, "\n"))
 			return (NULL);
 	}
-	return (i <= 26 ? tetries : NULL);
+	return (i <= 26 ? (tetries) : (NULL));
 }
