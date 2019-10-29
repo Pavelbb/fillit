@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 10:24:20 by clynderl          #+#    #+#             */
-/*   Updated: 2019/10/29 18:10:41 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/10/29 18:14:05 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@ int			ft_valid_tetri(char *buf, int k)
 			return (0);
 		if ((i + 1) % 5 != 0 && buf[i] != '.' && buf[i] != '#')
 			return (0);
-		if (buf[i] == '#')
+		if (buf[i] == '#' && (buf[i] = 'A' + k))
 		{
-			touches += (i + 5 <= 20 ? buf[i + 5] == '#' || ft_isalpha(buf[i + 5]) : 0) +
-				(i - 5 >= 0 ? buf[i - 5] == '#' || ft_isalpha(buf[i - 5]) : 0) +
-				(i + 1 <= 20 ? buf[i + 1] == '#' || ft_isalpha(buf[i + 1]) : 0) +
-				(i - 1 >= 0 ? buf[i - 1] == '#' || ft_isalpha(buf[i - 1]) : 0);
+			touches +=
+			(i + 5 <= 20 ? buf[i + 5] == '#' || ft_isalpha(buf[i + 5]) : 0) +
+			(i - 5 >= 0 ? buf[i - 5] == '#' || ft_isalpha(buf[i - 5]) : 0) +
+			(i + 1 <= 20 ? buf[i + 1] == '#' || ft_isalpha(buf[i + 1]) : 0) +
+			(i - 1 >= 0 ? buf[i - 1] == '#' || ft_isalpha(buf[i - 1]) : 0);
 			hashes++;
-			buf[i] = 'A' + k;
 		}
 		i++;
 	}
