@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 10:24:20 by clynderl          #+#    #+#             */
-/*   Updated: 2019/10/29 17:52:28 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/10/29 18:10:41 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ char		*shift_to_left(char *str)
 char		*to_top_left(char *str)
 {
 	char	*new;
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 
 	if (!(new = ft_strnew(20)))
 		return (NULL);
@@ -48,10 +48,9 @@ char		*to_top_left(char *str)
 	j = -1;
 	while (i < 20)
 		new[j++] = str[i++];
-	while (!(ft_isalpha(new[0]) || ft_isalpha(new[5]) || ft_isalpha(new[10]) || ft_isalpha(new[15])))
-	{
+	while (!(ft_isalpha(new[0]) || ft_isalpha(new[5])
+			|| ft_isalpha(new[10]) || ft_isalpha(new[15])))
 		new = shift_to_left(new);
-	}
 	return (new);
 }
 
@@ -72,10 +71,10 @@ int			ft_valid_tetri(char *buf, int k)
 			return (0);
 		if (buf[i] == '#')
 		{
-			touches += (i + 5 <= 20 ? buf[i + 5] == '#' || buf[i + 5] == 'A' + k : 0) +
-						(i - 5 >= 0 ? buf[i - 5] == '#' || buf[i - 5] == 'A' + k : 0) +
-						(i + 1 <= 20 ? buf[i + 1] == '#' || buf[i + 1] == 'A' + k : 0) +
-						(i - 1 >= 0 ? buf[i - 1] == '#' || buf[i - 1] == 'A' + k : 0);
+			touches += (i + 5 <= 20 ? buf[i + 5] == '#' || ft_isalpha(buf[i + 5]) : 0) +
+				(i - 5 >= 0 ? buf[i - 5] == '#' || ft_isalpha(buf[i - 5]) : 0) +
+				(i + 1 <= 20 ? buf[i + 1] == '#' || ft_isalpha(buf[i + 1]) : 0) +
+				(i - 1 >= 0 ? buf[i - 1] == '#' || ft_isalpha(buf[i - 1]) : 0);
 			hashes++;
 			buf[i] = 'A' + k;
 		}
