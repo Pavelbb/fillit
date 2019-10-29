@@ -6,16 +6,33 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 10:24:20 by clynderl          #+#    #+#             */
-/*   Updated: 2019/10/29 17:44:35 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:52:28 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+char		*shift_to_left(char *str)
+{
+	char	temp;
+	int		i;
+	int		j;
+
+	i = -1;
+	while (++i < 4)
+	{
+		temp = str[0 + (i * 5)];
+		j = -1;
+		while (++j < 3)
+			str[j + (i * 5)] = str[j + (i * 5) + 1];
+		str[3 + (i * 5)] = temp;
+	}
+	return (str);
+}
+
 char		*to_top_left(char *str)
 {
 	char	*new;
-	char	temp;
 	int 	i;
 	int 	j;
 
@@ -33,15 +50,7 @@ char		*to_top_left(char *str)
 		new[j++] = str[i++];
 	while (!(ft_isalpha(new[0]) || ft_isalpha(new[5]) || ft_isalpha(new[10]) || ft_isalpha(new[15])))
 	{
-		i = -1;
-		while (++i < 4)
-		{
-			temp = new[0 + (i * 5)];
-			j = -1;
-			while (++j < 3)
-				new[j + (i * 5)] = new[j + (i * 5) + 1];
-			new[3 + (i * 5)] = temp;
-		}
+		new = shift_to_left(new);
 	}
 	return (new);
 }
