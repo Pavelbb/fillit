@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 13:27:03 by clynderl          #+#    #+#             */
-/*   Updated: 2019/11/02 15:35:21 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/11/02 15:40:38 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		ft_backtracing(t_tetri *tetries, t_map *map)
 		while (!ft_is_placeable(tetri, map, pos))
 			pos++;
 		ft_fill(tetri, map, pos);
+		tetri->pos = pos;
 		tetri = tetri->next;
 		i++;
 	}
