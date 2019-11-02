@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 10:24:45 by clynderl          #+#    #+#             */
-/*   Updated: 2019/10/23 16:24:17 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/11/02 14:46:20 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_tetri		*ft_create_elem(char *data)
 	if (!(elem = (t_tetri*)malloc(sizeof(t_tetri))))
 		return (NULL);
 	elem->data = ft_strdup(data);
+	elem->pos = -1;
 	elem->next = NULL;
 	return (elem);
 }
