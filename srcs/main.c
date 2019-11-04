@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 10:11:03 by clynderl          #+#    #+#             */
-/*   Updated: 2019/10/28 16:51:00 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:12:30 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int argc, char *argv[])
 		tetries = tetries->next;
 	}
 
-	printf("\n%s",map->data);
+	printf("\n%s", map->data);
 
 	return (0);
 }
