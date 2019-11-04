@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 10:07:37 by clynderl          #+#    #+#             */
-/*   Updated: 2019/11/02 14:45:55 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:09:09 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef	struct		s_tetri
 {
 	char			*data;
 	int				pos;
-	struct	s_tetri	*next;
+	struct s_tetri	*next;
 }					t_tetri;
 
 typedef	struct		s_map
