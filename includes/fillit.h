@@ -6,14 +6,13 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 10:07:37 by clynderl          #+#    #+#             */
-/*   Updated: 2019/11/04 18:09:09 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/11/04 21:05:29 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include <stdio.h> //
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
