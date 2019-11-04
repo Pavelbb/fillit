@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 13:27:03 by clynderl          #+#    #+#             */
-/*   Updated: 2019/11/04 18:28:11 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/11/04 19:55:13 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,40 @@ int		ft_backtracking(t_tetri *tetries, t_map *map)
 {
 	t_tetri *tetri;
 	int		i;
+	int		ls;
 	int		pos;
 
 	pos = 0;
+	ls = ft_list_size(tetries);
 	i = 0;
 	tetri = tetries;
-	while (i < 4)
+	while (i < ls)
 	{
-		while (!ft_is_placeable(tetri, map, pos))
-			pos++;
-		ft_fill(tetri, map, pos, 1);
-		tetri->pos = pos;
-		ft_fill(tetri, map, pos, 0);
+		if (tetri->pos == -1)
+			break ;
 		tetri = tetri->next;
 		i++;
 	}
-	return (1);
+	if (i == ls)
+		return (1);
+	i = 0;
+	tetri = tetries;
+	while (pos < map->area)
+	{
+		while (tetri && (tetri->pos > 0))
+			tetri = tetri->next;
+		if (ft_is_placeable(tetri, map, pos))
+		{
+			ft_fill(tetri, map, pos, 1);
+			tetri->pos = pos;
+			if (ft_backtracking(tetri, map))
+				return (1);
+			ft_fill(tetri, map, pos, 0);
+			tetri->pos = -1;
+		}
+		pos++;
+	}
+	return (0);
 }
 
 t_map	*ft_solve(t_tetri *tetries)
