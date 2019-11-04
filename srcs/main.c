@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 10:11:03 by clynderl          #+#    #+#             */
-/*   Updated: 2019/11/04 18:12:30 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/11/04 20:18:09 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,6 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	map = ft_solve(tetries);
-
-	int i = 0;
-	while (i < ft_list_size(tetries))
-	{
-		printf("%s\n", tetries->data);
-		tetries = tetries->next;
-	}
-
-	printf("\n%s", map->data);
-
+	ft_putendl(map->data);
 	return (0);
 }
