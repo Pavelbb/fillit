@@ -6,7 +6,7 @@
 #    By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 20:08:05 by clynderl          #+#    #+#              #
-#    Updated: 2019/11/04 20:14:36 by clynderl         ###   ########.fr        #
+#    Updated: 2019/11/09 13:07:58 by clynderl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,9 @@ CFLAGS =	-Wall -Wextra -Werror
 SRCS =		srcs/ft_list.c \
 			srcs/main.c \
 			srcs/parse.c \
-			srcs/solve.c
-OBJS = ft_list.o main.o parse.o solve.o
+			srcs/solve.c \
+			srcs/tetri.c
+OBJS = ft_list.o main.o parse.o solve.o tetri.o
 
 all: $(NAME)
 
