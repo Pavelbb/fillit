@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 13:27:03 by clynderl          #+#    #+#             */
-/*   Updated: 2019/11/09 15:56:16 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/11/09 18:45:09 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ t_map	*ft_solve(t_tetri *tetries)
 		if (ft_backtracking(tetries, map, 0))
 			return (map);
 		map->size++;
+		free(map->data);
 	}
 	return (NULL);
 }

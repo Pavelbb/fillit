@@ -6,11 +6,12 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 13:06:14 by clynderl          #+#    #+#             */
-/*   Updated: 2019/11/09 14:51:01 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/11/09 18:41:56 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 char		*shift_to_left(char *str)
 {
@@ -51,5 +52,7 @@ char		*to_top_left(char *str)
 	while (!(ft_isalpha(new[0]) || ft_isalpha(new[5])
 			|| ft_isalpha(new[10]) || ft_isalpha(new[15])))
 		new = shift_to_left(new);
-	return (new);
+	str = ft_strcpy(str, new);
+	free(new);
+	return (str);
 }
