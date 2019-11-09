@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 10:07:37 by clynderl          #+#    #+#             */
-/*   Updated: 2019/11/04 21:05:29 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/11/09 18:46:32 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ typedef	struct		s_map
 	int				area;
 }					t_map;
 
-t_tetri				*ft_parse(int fd);
+t_tetri				*ft_parse(int fd, int r);
 t_tetri				*ft_create_elem(char *data);
 void				ft_list_push_back(t_tetri **begin_list, char *data);
 int					ft_list_size(t_tetri *begin_list);
 t_map				*ft_solve(t_tetri *tetries);
+char				*to_top_left(char *str);
 
 #endif
