@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 13:27:03 by clynderl          #+#    #+#             */
-/*   Updated: 2019/11/04 20:35:28 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/11/09 15:56:16 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,32 +45,29 @@ int		ft_is_placeable(t_tetri *tetri, t_map *map, int pos)
 	return (1);
 }
 
+int		is_pos(t_tetri *tetries)
+{
+	return (!(tetries->pos != -1)
+		+ (tetries->next ? is_pos(tetries->next) : 0));
+}
+
 int		ft_backtracking(t_tetri *tetries, t_map *map, int pos)
 {
 	t_tetri *tetri;
-	int		i;
-	int		ls;
 
-	ls = ft_list_size(tetries);
 	tetri = tetries;
-	i = 0;
-	while (i < ls)
-	{
-		if (tetri->pos == -1)
-			break ;
-		tetri = tetri->next;
-		i++;
-	}
-	if (i == ls)
+	if (!(is_pos(tetries)))
 		return (1);
 	while (pos < map->area)
 	{
-		while (tetri && (tetri->pos > 0))
+		while (tetri && (tetri->pos != -1))
 			tetri = tetri->next;
 		if (ft_is_placeable(tetri, map, pos))
 		{
 			ft_fill(tetri, map, pos, 1);
 			tetri->pos = pos;
+			if (pos == map->area)
+				return (0);
 			if (ft_backtracking(tetri, map, 0))
 				return (1);
 			ft_fill(tetri, map, pos, 0);
