@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 10:07:37 by clynderl          #+#    #+#             */
-/*   Updated: 2019/11/09 18:46:32 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/11/10 13:46:29 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef	struct		s_map
 }					t_map;
 
 t_tetri				*ft_parse(int fd, int r);
+int					ft_list_free(t_tetri *list);
+t_tetri				*ft_list_and_str_free(t_tetri *list, char *str);
 t_tetri				*ft_create_elem(char *data);
 void				ft_list_push_back(t_tetri **begin_list, char *data);
 int					ft_list_size(t_tetri *begin_list);

@@ -1,42 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_funcs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/19 10:11:03 by clynderl          #+#    #+#             */
-/*   Updated: 2019/11/10 13:50:47 by clynderl         ###   ########.fr       */
+/*   Created: 2019/11/10 13:50:22 by clynderl          #+#    #+#             */
+/*   Updated: 2019/11/10 13:50:44 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		main(int argc, char *argv[])
+int		ft_list_free(t_tetri *list)
 {
-	int		fd;
-	t_tetri	*tetries;
-	t_map	*map;
+	t_tetri *tmp;
 
-	if (argc != 2)
+	while (list != NULL)
 	{
-		ft_putendl("./fillit <filename>");
-		return (0);
+		tmp = list->next;
+		free(list->data);
+		free(list);
+		list = tmp;
 	}
-	if ((fd = open(argv[1], O_RDONLY)) < 0)
-	{
-		ft_putendl("error");
-		return (0);
-	}
-	if (!(tetries = ft_parse(fd, 1)))
-	{
-		ft_putendl("error");
-		return (0);
-	}
-	map = ft_solve(tetries);
-	ft_putstr(map->data);
-	free(map->data);
-	free(map);
-	ft_list_free(tetries);
+	free(tmp);
 	return (0);
+}
+
+t_tetri	*ft_list_and_str_free(t_tetri *list, char *str)
+{
+	t_tetri *tmp;
+
+	while (list != NULL)
+	{
+		tmp = list->next;
+		free(list->data);
+		free(list);
+		list = tmp;
+	}
+	free(tmp);
+	if (str != NULL)
+		free(str);
+	return (NULL);
 }
