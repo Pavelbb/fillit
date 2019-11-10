@@ -6,7 +6,7 @@
 #    By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 20:08:05 by clynderl          #+#    #+#              #
-#    Updated: 2019/11/09 13:07:58 by clynderl         ###   ########.fr        #
+#    Updated: 2019/11/10 16:05:13 by clynderl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,23 +14,29 @@ NAME =		fillit
 
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
-
-SRCS =		srcs/ft_list.c \
-			srcs/main.c \
-			srcs/parse.c \
-			srcs/solve.c \
-			srcs/tetri.c
-OBJS = ft_list.o main.o parse.o solve.o tetri.o
+OBJS =		ft_list.o main.o parse.o solve.o tetri.o free_funcs.o
+LIB =		libft/libft.a
 
 all: $(NAME)
 
-$(NAME): lib $(OBJS)
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L libft -lft
+ft_list.o: srcs/ft_list.c
+	$(CC) $(CFLAGS) -c srcs/ft_list.c -o ft_list.o -I includes -I libft/includes/
+main.o: srcs/main.c
+	$(CC) $(CFLAGS) -c srcs/main.c -o main.o -I includes -I libft/includes/
+parse.o: srcs/parse.c
+	$(CC) $(CFLAGS) -c srcs/parse.c -o parse.o -I includes -I libft/includes/
+solve.o: srcs/solve.c
+	$(CC) $(CFLAGS) -c srcs/solve.c -o solve.o -I includes -I libft/includes/
+tetri.o: srcs/tetri.c
+	$(CC) $(CFLAGS) -c srcs/tetri.c -o tetri.o -I includes -I libft/includes/
+free_funcs.o: srcs/free_funcs.c
+	$(CC) $(CFLAGS) -c srcs/free_funcs.c -o free_funcs.o -I includes -I libft/includes/
 
-$(OBJS):
-		$(CC) $(CFLAGS) -c $(SRCS) -I includes/ -I libft/includes/
 
-lib:
+$(NAME): $(LIB) $(OBJS)
+	$(CC) $(OBJS) -o $(NAME) -L libft/ -lft
+
+$(LIB):
 	make -C libft
 
 clean:
