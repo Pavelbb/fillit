@@ -6,7 +6,7 @@
 /*   By: clynderl <clynderl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 13:50:22 by clynderl          #+#    #+#             */
-/*   Updated: 2019/11/10 13:50:44 by clynderl         ###   ########.fr       */
+/*   Updated: 2019/11/10 15:00:14 by clynderl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,16 @@ t_tetri	*ft_list_and_str_free(t_tetri *list, char *str)
 {
 	t_tetri *tmp;
 
-	while (list != NULL)
+	tmp = list;
+	if (list != NULL)
 	{
-		tmp = list->next;
-		free(list->data);
-		free(list);
-		list = tmp;
+		while (list != NULL)
+		{
+			tmp = list->next;
+			free(list->data);
+			free(list);
+			list = tmp;
+		}
 	}
 	free(tmp);
 	if (str != NULL)
